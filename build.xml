@@ -1,0 +1,30 @@
+<project default="compile" name="BreakoutGame">
+
+    <!-- Cross-platform classpath definition -->
+    <path id="project.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="biuoop-1.4.jar"/>
+    </path>
+
+    <!-- Compile all java source files into bin directory -->
+    <target name="compile">
+        <mkdir dir="bin"/>
+        <javac classpathref="project.classpath" 
+               srcdir="src" 
+               destdir="bin" 
+               includeantruntime="false"/>
+    </target>
+
+    <!-- Clean build artifacts -->
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+
+    <!-- Run the game -->
+    <target name="run" depends="compile">
+        <java classname="BreakoutGame" 
+              classpathref="project.classpath" 
+              fork="true"/>
+    </target>
+
+</project>
